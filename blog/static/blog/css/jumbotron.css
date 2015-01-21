@@ -1,0 +1,16 @@
+
+/*.main-background {
+    background-image:url() !important;
+    background-position: -100px -100px !important;
+    background-attachment: fixed;
+    background-color: white;
+}*/
+
+/*.row {
+    color: #fff !important;
+}*/
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}

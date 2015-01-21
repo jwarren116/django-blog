@@ -1,0 +1,30 @@
+{% extends 'base_site.html' %}
+
+
+{% block content %}
+    <!-- Main jumbotron -->
+    <div class="jumbotron">
+      <div class="container">
+      {% if heading %}
+        <h1>{{ heading.title }}</h1>
+        <p>{{ heading.blurb|safe }}</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'entry' heading.id %}" role="button">Read more &raquo;</a></p>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="container">
+      <!-- Row of columns -->
+      <div class="row">
+      {% if posts %}
+        {% for item in posts %}
+        <div class="col-md-4">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.blurb|safe }}</p>
+          <p><a class="btn btn-default" href="{% url 'entry' item.id %}" role="button">Read more &raquo;</a></p>
+        </div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div> <!-- /container -->
+{% endblock %}
