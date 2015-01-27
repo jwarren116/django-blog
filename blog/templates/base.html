@@ -21,6 +21,7 @@
         <div class="col-md-4">
           <h2>{{ item.title }}</h2>
           <p>{{ item.blurb|safe }}</p>
+          <p><small>posted on {{ item.created }}</small></p>
           <p><a class="btn btn-default" href="{% url 'entry' item.id %}" role="button">Read more &raquo;</a></p>
         </div>
         {% endfor %}
