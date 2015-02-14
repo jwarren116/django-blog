@@ -16,3 +16,8 @@ def entry(request, id):
     return render(request, 'entry.html', {
         'entry': entry_,
     })
+
+def posts(request):
+    return render(request, 'posts.html', {
+        'posts': BlogPost.objects.order_by('created')[::-1]
+        })
