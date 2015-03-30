@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import Http404
 from blog.models import BlogPost
 
+
 def index(request):
-    return render(request, 'base.html', {
+    return render(request, 'index.html', {
         'posts': BlogPost.objects.filter(display=True).order_by('created')[::-1],
         'heading': BlogPost.objects.filter(heading=True).order_by('created')[0]
         })
+
 
 def entry(request, id):
     try:
@@ -16,6 +18,7 @@ def entry(request, id):
     return render(request, 'entry.html', {
         'entry': entry_,
     })
+
 
 def posts(request):
     return render(request, 'posts.html', {
