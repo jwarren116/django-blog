@@ -1,38 +1,20 @@
 {% extends 'base.html' %}
 
-{% block nav %}
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="http://www.github.com/jwarren116" target="_blank">Git Hub</a></li>
-            <li><a href="{% url 'posts' %}">Posts</a></li>
-            <li class="active"><a href="{% url 'contact' %}">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a target="_blank" href="https://www.ezpy.co">ezPy Environment Manager</a></li>
-                <li><a target="_blank" href="https://dine-o-truck.jwarren.co">Dine-o-Truck</a></li>
-                <li><a target="_blank" href="https://cf.jwarren.co">Code Fellows Learning Journal</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-{% endblock %}
 
 {% block content %}
-    <div class="container">
+  <div class="container">
     </br></br>
-        <h3>Contact Me</h3>
-        <h5>Or you can email me <a href="mailto:james@jwarren.co">directly</a>.</h5>
-        <hr>
-        <form action="" method="POST" onsubmit="thankYou()">{% csrf_token %}
-            <p><label for="email"><b>Your Email:</b></label></br>
-                <input id="email" type="email" name="email" required="True" maxlength="100" style="width:250px" autofocus /></p>
-            <p><label for="subject">Subject:</label></br>
-                <input id="subject" type="text" name="subject" required="True" maxlength="100" style="width:250px" /></p>
-            <p><label for="body"><b>Your Message:</b></label></br>
-                <textarea id="body" name="body" required="True" rows="10" cols="50"></textarea></p>
-            <p><input class="btn btn-default" role="button" type="submit" value="Send &raquo;" />
-        </form>
-    </div>
+    <h3>Contact Me</h3>
+    <h5>Or you can email me <a href="mailto:james@jwarren.co">directly</a>.</h5>
+    <hr>
+    <form action="" method="POST" onsubmit="thankYou()">{% csrf_token %}
+      <p><label for="email"><b>Your Email:</b></label></br>
+        <input id="email" type="email" name="email" required="True" maxlength="100" style="width:250px" autofocus /></p>
+      <p><label for="subject">Subject:</label></br>
+        <input id="subject" type="text" name="subject" required="True" maxlength="100" style="width:250px" /></p>
+      <p><label for="body"><b>Your Message:</b></label></br>
+        <textarea id="body" name="body" required="True" rows="10" cols="50"></textarea></p>
+      <p><input class="btn btn-default" role="button" type="submit" value="Send &raquo;" />
+    </form>
+  </div>
 {% endblock %}
