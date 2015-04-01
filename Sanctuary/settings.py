@@ -1,6 +1,6 @@
 import os
 from configurations import Settings
-import dj_database_url
+# import dj_database_url
 
 
 class Base(Settings):
