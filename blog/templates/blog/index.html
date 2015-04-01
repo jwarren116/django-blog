@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <!-- Main jumbotron -->
+    <div class="container">
+      <div class="jumbotron">
+      {% if heading %}
+        <h1>{{ heading.title }}</h1>
+        <p>{{ heading.post|safe|truncatewords:40 }}</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'entry' heading.id %}" role="button">Read more &raquo;</a></p>
+      {% endif %}
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Row of columns -->
+      {% if posts %}
+        {% for item in posts %}
+        <div class="col-md-4">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.post|safe|truncatewords:40 }}</p>
+          <p><small>posted on {{ item.created }}</small></p>
+          <p><a class="btn btn-default" href="{% url 'entry' item.id %}" role="button">Read more &raquo;</a></p>
+        </div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div> <!-- /container -->
+{% endblock %}

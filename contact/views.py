@@ -1,12 +1,7 @@
 from django.shortcuts import render
-from django.forms import ModelForm
-from django.http import HttpResponse, HttpResponseRedirect, Http404
 from contact.models import ContactMe
+from contact.forms import ContactForm
 
-class ContactForm(ModelForm):
-    class Meta:
-        model = ContactMe
-        fields = ['email', 'subject', 'body']
 
 def contact(request):
     if request.method == 'POST':
@@ -14,5 +9,4 @@ def contact(request):
         if email_info.is_valid():
             email_info.save()
     return render(request, 'contact.html', {
-
     })

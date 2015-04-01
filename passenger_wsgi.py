@@ -11,5 +11,7 @@ sys.path.insert(0,cwd+'/env/lib/python2.7/site-packages/django')
 sys.path.insert(0,cwd+'/env/lib/python2.7/site-packages')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = "Sanctuary.settings"
-from django.core.wsgi import get_wsgi_application
+os.environ.setdefault("DJANGO_CONFIGURATION", "Dev")
+
+from configurations.wsgi import get_wsgi_application
 application = get_wsgi_application()

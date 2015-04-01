@@ -1,100 +1,95 @@
-"""
-Django settings for Sanctuary project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from configurations import Settings
+# import dj_database_url
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+class Base(Settings):
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'bj=!=pc4$06_wqkn4dl0wp%4o(b76(h@1p^uty)q20p7b5mlpj')
+    INSTALLED_APPS = (
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'blog',
+        'contact',
+    )
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+    MIDDLEWARE_CLASSES = (
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    )
 
-TEMPLATE_DEBUG = os.environ.get('TEMPLATE_DEBUG', False)
+    ROOT_URLCONF = 'Sanctuary.urls'
+    WSGI_APPLICATION = 'Sanctuary.wsgi.application'
 
+    LANGUAGE_CODE = 'en-us'
+    TIME_ZONE = 'America/Los_Angeles'
+    USE_I18N = True
+    USE_L10N = True
+    USE_TZ = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Application definition
+    STATIC_ROOT = BASE_DIR + '/public/static/'
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'blog/static/blog'),
+        os.path.join(BASE_DIR, 'contact/static/contact')
+    )
 
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'blog',
-    'contact',
-)
+    TEMPLATE_DIRS = [
+        os.path.join(BASE_DIR, 'templates'),
+        os.path.join(BASE_DIR, 'blog/templates/blog'),
+        os.path.join(BASE_DIR, 'contact/templates/blog')
+    ]
 
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-ROOT_URLCONF = 'Sanctuary.urls'
-
-WSGI_APPLICATION = 'Sanctuary.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+    
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+class Dev(Base):
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     }
+    # }
+    ALLOWED_HOSTS = ['*']
+    SECRET_KEY = 'secret'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Los_Angeles'
+class Prod(Base):
+    from secrets import EMAIL_PASSWORD, EMAIL_USER, SECRET
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+    DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
+    # DATABASES = {'default': dj_database_url.config()}
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    ALLOWED_HOSTS = ['.jwarren.co']
+    SECRET_KEY = SECRET
 
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-# Static asset configuration
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.dirname(BASE_DIR) + '/jwarren.co/public/static/'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'blog/static/blog'),
-    os.path.join(BASE_DIR, 'contact/static/contact')
-)
-
-TEMPLATE_DIRS = [
-    os.path.join(BASE_DIR, 'templates'),
-    os.path.join(BASE_DIR, 'blog/templates'),
-    os.path.join(BASE_DIR, 'contact/templates')
-]
+    EMAIL_HOST = 'mail.jwarren.co'
+    EMAIL_HOST_USER = EMAIL_USER
+    EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+    SERVER_EMAIL = DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True

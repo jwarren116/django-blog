@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+</br></br>
+  <div class="container">
+    {% for entry in posts %}
+    <h1>{{ entry.title }}</h1>
+    <p><small>posted {{ entry.created }}</small></p>
+    <p>{{ entry.post|safe|truncatewords:60 }}</p>
+    <p><a class="btn btn-default" href="{% url 'entry' entry.id %}" role="button">Read more &raquo;</a></p>
+    {% endfor %}
+  </div> <!-- /container -->
+{% endblock %}
