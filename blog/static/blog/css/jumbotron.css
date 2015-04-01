@@ -1,4 +1,3 @@
-
 /*.main-background {
     background-image:url() !important;
     background-position: -100px -100px !important;
@@ -6,18 +5,10 @@
     background-color: white;
 }*/
 
-/*.row {
-    color: #fff !important;
-}*/
-
 body {
   padding-top: 80px;
   padding-bottom: 20px;
   background-color: #efefef;
-}
-
-.jumbotron {
-  background-color: #efefef !important;
 }
 
 p, li {
@@ -27,6 +18,18 @@ p, li {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Quattrocento Sans', sans-serif !important;
+}
+
+.navbar-inverse {
+  background-color: #337ab7 !important;
+}
+
+.navbar li a:hover {
+  color: #333 !important;
+}
+
+.jumbotron {
+  background-color: #efefef !important;
 }
 
 .detail-entry {

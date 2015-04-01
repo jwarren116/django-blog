@@ -40,7 +40,7 @@ class Base(Settings):
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'blog/static/blog'),
-        os.path.join(BASE_DIR, 'contact/static/contact')
+        # os.path.join(BASE_DIR, 'contact/static/contact')
     )
 
     TEMPLATE_DIRS = [
@@ -55,7 +55,7 @@ class Base(Settings):
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    
+
 
 class Dev(Base):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
