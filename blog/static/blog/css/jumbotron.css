@@ -13,4 +13,23 @@
 body {
   padding-top: 80px;
   padding-bottom: 20px;
+  background-color: #efefef;
+}
+
+.jumbotron {
+  background-color: #efefef !important;
+}
+
+p, li {
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-size: 1.2em;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Quattrocento Sans', sans-serif !important;
+}
+
+.detail-entry {
+  margin: 0 auto;
+  max-width: 700px;
 }
