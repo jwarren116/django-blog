@@ -36,6 +36,7 @@ class Base(Settings):
     USE_TZ = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+    STATIC_ROOT = BASE_DIR + '/public/static/'
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'blog/static/blog'),
@@ -48,17 +49,24 @@ class Base(Settings):
         os.path.join(BASE_DIR, 'contact/templates/blog')
     ]
 
-
-class Dev(Base):
-    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-    DEBUG = True
-    TEMPLATE_DEBUG = DEBUG
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+    
+
+class Dev(Base):
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     }
+    # }
     ALLOWED_HOSTS = ['*']
     SECRET_KEY = 'secret'
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -77,7 +85,6 @@ class Prod(Base):
         }
     }
     ALLOWED_HOSTS = ['.jwarren.co']
-    STATIC_ROOT = BASE_DIR + '/public/static/'
     SECRET_KEY = SECRET
 
     EMAIL_HOST = 'mail.jwarren.co'
