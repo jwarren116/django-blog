@@ -44,8 +44,8 @@ class Base(Settings):
 
     TEMPLATE_DIRS = [
         os.path.join(BASE_DIR, 'templates'),
-        os.path.join(BASE_DIR, 'blog/templates'),
-        os.path.join(BASE_DIR, 'contact/templates')
+        os.path.join(BASE_DIR, 'blog/templates/blog'),
+        os.path.join(BASE_DIR, 'contact/templates/blog')
     ]
 
 
