@@ -76,7 +76,7 @@ class Prod(Base):
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    ALLOWED_HOSTS = ['www.jwarren.co']
+    ALLOWED_HOSTS = ['.jwarren.co']
     STATIC_ROOT = BASE_DIR + '/public/static/'
     SECRET_KEY = SECRET
 
