@@ -7,7 +7,7 @@
       <div class="jumbotron">
       {% if heading %}
         <h1>{{ heading.title }}</h1>
-        <p>{{ heading.blurb|safe }}</p>
+        <p>{{ heading.post|safe|truncatewords:40 }}</p>
         <p><a class="btn btn-primary btn-lg" href="{% url 'entry' heading.id %}" role="button">Read more &raquo;</a></p>
       {% endif %}
       </div>
