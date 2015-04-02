@@ -13,6 +13,7 @@ class Base(Settings):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'markdown_deux',
         'blog',
         'contact',
     )
