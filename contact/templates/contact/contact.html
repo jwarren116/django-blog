@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 
 {% block content %}
@@ -6,8 +7,9 @@
   <!-- <div class="col-md-4 text-left" -->
     </br></br>
     <h3>Contact Me</h3>
-    <h5>Or you can email me <a href="mailto:james@jwarren.co">directly</a>.</h5>
-    <hr>
+    {% if success %}
+    <div id="thank-you-alert" class="alert alert-success" role="alert">Thank you! Your information has been submitted!</div>
+    {% endif %}
     <form action="" method="POST" onsubmit="thankYou()">{% csrf_token %}
       <p><label for="email"><b>Your Email:</b></label></br>
         <input id="email" type="email" name="email" required="True" maxlength="100" style="width:250px" autofocus /></p>
@@ -19,4 +21,8 @@
     </form>
     <!-- </div> -->
   </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}
