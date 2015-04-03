@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'index.html', {
         'posts': BlogPost.objects.filter(display=True).order_by('-created'),
         'heading': BlogPost.objects.filter(heading=True).order_by('created').first()
-        })
+    })
 
 
 def entry(request, id):
@@ -23,4 +23,4 @@ def entry(request, id):
 def posts(request):
     return render(request, 'posts.html', {
         'posts': BlogPost.objects.order_by('-created')
-        })
+    })

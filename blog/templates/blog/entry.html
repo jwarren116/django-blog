@@ -5,10 +5,8 @@
 {% block content %}
 </br></br>
   <div class="container detail-entry">
-    
-      <h1>{{ entry.title }}</h1>
-      <p><small>posted {{ entry.created }}</small></p>
-      <p>{{ entry.post|markdown }}</p>
-    
+    <h1>{{ entry.title }}</h1>
+    <p><small>posted {{ entry.created }}</small></p>
+    <p>{{ entry.post|markdown }}</p>
   </div> <!-- /container -->
 {% endblock %}

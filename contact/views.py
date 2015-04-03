@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from contact.models import ContactMe
 from contact.forms import ContactForm
 
 
