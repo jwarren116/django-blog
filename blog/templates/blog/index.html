@@ -4,7 +4,7 @@
 
 {% block content %}
     <!-- Main jumbotron -->
-    <div class="container">
+<!--     <div class="container">
       <div class="jumbotron">
       {% if heading %}
         <h1>{{ heading.title }}</h1>
@@ -12,9 +12,36 @@
         <p><a class="btn btn-primary btn-lg" href="{% url 'entry' heading.id %}" role="button">Read more &raquo;</a></p>
       {% endif %}
       </div>
+    </div> -->
+
+    <div class="container headliner">
+      <div class="col-md-12">
+        <h1>James Warren</h1>
+        <h5 class="text-right">Python developer with a background in art and a passion for discovering how things work and break</h5>
+      </div>
     </div>
 
-    <div class="container">
+    <div class="container text-center headliner">
+      <!-- Row of columns -->
+      <div class="col-md-6">
+        <h2>ezPy</h2>
+        <p>screenshot here</p>
+        <p>blurb here</p>
+        <p><a class="btn btn-default" href="http://www.ezpy.co" role="button">Check it out</a></p>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Dine-o-Truck</h2>
+        <p>screenshot here</p>
+        <p>blurb here</p>
+        <p><a class="btn btn-default" href="http://dine-o-truck.jwarren.co" role="button">Check it out</a></p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+    <div class="container headliner">
       <!-- Row of columns -->
       {% if posts %}
         {% for item in posts %}
@@ -26,6 +53,6 @@
         </div>
         {% endfor %}
       {% endif %}
-      </div>
+      
     </div> <!-- /container -->
 {% endblock %}

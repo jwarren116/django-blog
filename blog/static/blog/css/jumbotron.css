@@ -1,23 +1,59 @@
-/*.main-background {
-    background-image:url() !important;
-    background-position: -100px -100px !important;
-    background-attachment: fixed;
-    background-color: white;
-}*/
-
 body {
   padding-top: 80px;
   padding-bottom: 20px;
-  background-color: #efefef;
+  background-color: #fff;
+  /*z-index: 1;*/
 }
+
+/*html,body {
+    background: url("BART.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}*/
+
+/*body:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("BART.jpg") no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.5;
+  min-width: 800px;
+}*/
 
 p, li {
   font-family: 'Josefin Sans', sans-serif !important;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Quattrocento Sans', sans-serif !important;
+}
+
+h1 {
+  font-size: 5em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2.5em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+h5 {
+  font-size: 1.5em;
 }
 
 .navbar-inverse {
@@ -25,14 +61,19 @@ h1, h2, h3, h4, h5 {
 }
 
 .navbar li a:hover {
-  color: #333 !important;
+  color: #444 !important;
 }
 
 .jumbotron {
-  background-color: #efefef !important;
+  background-color: #777 !important;
+  color: #eee !important;
 }
 
 .detail-entry {
   margin: 0 auto;
   max-width: 700px;
+}
+
+.headliner {
+  margin: 150px auto;
 }
