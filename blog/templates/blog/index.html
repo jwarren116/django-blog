@@ -61,11 +61,11 @@
       <div class="col-md-2">
         <h1 class="rotate-left project-header blue">Posts</h1>
       </div>
-      <div class="col-md-2"></div>
+      <!-- <div class="col-md-2"></div> -->
 
       {% if posts %}
         {% for item in posts %}
-        <div class="col-md-4">
+        <div class="col-md-4 post">
           <h2 class="post-title">{{ item.title }}</h2>
           <p>{{ item.post|markdown|truncatewords:40 }}</p>
           <p><small>posted on {{ item.created }}</small></p>

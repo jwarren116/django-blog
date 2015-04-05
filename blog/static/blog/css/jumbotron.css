@@ -65,7 +65,7 @@ footer {
 }
 
 .headliner {
-  margin: 175px auto;
+  margin-top: 175px;
 }
 
 .wrapped {
@@ -100,9 +100,9 @@ footer {
 }
 
 .post-title {
-  height: 100px;
+  min-height: 75px;
 }
 
-#posts {
-  clear: both;
+.post {
+  height: 370px;
 }
