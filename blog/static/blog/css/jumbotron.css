@@ -50,6 +50,10 @@ footer {
   border-bottom: none;
 }
 
+.navbar li a {
+  color: #eee !important;
+}
+
 .navbar li a:hover {
   color: #444 !important;
 }
