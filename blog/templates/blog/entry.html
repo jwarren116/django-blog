@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
+{% load markdown_deux_tags %}
 
+
+{% block nav %}
+  <li><a href="{% url 'index' %}#projects">Projects</a></li>
+  <li><a href="{% url 'index' %}#posts">Posts</a></li>
+  <li><a href="{% url 'index' %}#about">About</a></li>
+{% endblock %}
 
 {% block content %}
 </br></br>
   <div class="container detail-entry">
-    
-      <h1>{{ entry.title }}</h1>
-      <p><small>posted {{ entry.created }}</small></p>
-      <p>{{ entry.post|safe }}</p>
-    
+    <h1>{{ entry.title }}</h1>
+    <p><small>posted {{ entry.created }}</small></p>
+    <p>{{ entry.post|markdown }}</p>
   </div> <!-- /container -->
 {% endblock %}

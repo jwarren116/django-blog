@@ -13,6 +13,7 @@ class Base(Settings):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'markdown_deux',
         'blog',
         'contact',
     )
@@ -40,13 +41,13 @@ class Base(Settings):
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'blog/static/blog'),
-        os.path.join(BASE_DIR, 'contact/static/contact')
+        # os.path.join(BASE_DIR, 'contact/static/contact')
     )
 
     TEMPLATE_DIRS = [
         os.path.join(BASE_DIR, 'templates'),
         os.path.join(BASE_DIR, 'blog/templates/blog'),
-        os.path.join(BASE_DIR, 'contact/templates/blog')
+        os.path.join(BASE_DIR, 'contact/templates/contact')
     ]
 
     DATABASES = {
@@ -55,7 +56,7 @@ class Base(Settings):
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    
+
 
 class Dev(Base):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -78,12 +79,6 @@ class Prod(Base):
     DEBUG = False
     TEMPLATE_DEBUG = DEBUG
     # DATABASES = {'default': dj_database_url.config()}
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
     ALLOWED_HOSTS = ['.jwarren.co']
     SECRET_KEY = SECRET
 

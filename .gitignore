@@ -4,3 +4,4 @@ env
 public
 secrets.py
 *.sqlite3
+blog/static/blog/img/subway.png
