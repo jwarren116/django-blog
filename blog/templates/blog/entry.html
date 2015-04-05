@@ -2,6 +2,12 @@
 {% load markdown_deux_tags %}
 
 
+{% block nav %}
+  <li><a href="{% url 'index' %}#projects">Projects</a></li>
+  <li><a href="{% url 'index' %}#posts">Posts</a></li>
+  <li><a href="{% url 'index' %}#about">About</a></li>
+{% endblock %}
+
 {% block content %}
 </br></br>
   <div class="container detail-entry">
