@@ -1,58 +1,77 @@
 {% extends 'base.html' %}
 {% load markdown_deux_tags %}
+{% load staticfiles %}
 
+
+{% block nav %}
+  <li><a href="#" onmousedown="autoScrollTo('projects');">Projects</a></li>
+  <li><a href="#" onmousedown="autoScrollTo('posts');">Posts</a></li>
+  <li><a href="#" onmousedown="autoScrollTo('about');">About</a></li>
+{% endblock %}
 
 {% block content %}
-    <!-- Main jumbotron -->
-<!--     <div class="container">
-      <div class="jumbotron">
-      {% if heading %}
-        <h1>{{ heading.title }}</h1>
-        <p>{{ heading.post|markdown|truncatewords:40 }}</p>
-        <p><a class="btn btn-primary btn-lg" href="{% url 'entry' heading.id %}" role="button">Read more &raquo;</a></p>
-      {% endif %}
-      </div>
-    </div> -->
-
     <div class="container headliner">
       <div class="col-md-12">
         <h1>James Warren</h1>
-        <h4 class="text-right wrapped">Python developer with a background in art and a passion for discovering how things work and break</h4>
+        <h4 class="text-right wrapped red">Python developer with a background in art and a passion for discovering how things work and break</h4>
       </div>
-    </div>
-
-    <div class="container text-center headliner">
-      <!-- Row of columns -->
-      <div class="col-md-6">
-        <h2>ezPy</h2>
-        <p>screenshot here</p>
-        <p>blurb here</p>
-        <p><a class="btn btn-default" href="http://www.ezpy.co" role="button">Check it out</a></p>
-      </div>
-
-      <div class="col-md-6">
-        <h2>Dine-o-Truck</h2>
-        <p>screenshot here</p>
-        <p>blurb here</p>
-        <p><a class="btn btn-default" href="http://dine-o-truck.jwarren.co" role="button">Check it out</a></p>
-      </div>
-
     </div> <!-- /container -->
 
 
-
-    <div class="container headliner">
+    <div class="container text-center headliner" id="projects">
       <!-- Row of columns -->
+      <div class="col-md-2">
+        <h1 class="rotate-left text-right project-header blue">Projects</h1>
+      </div>
+      <div class="col-md-5">
+        <h2>ezPy</h2>
+        <a href="http://www.ezpy.co/">
+        <img src="{% static '/static/blog/img/ezpy.jpg' %}" class="img-thumbnail" />
+        </a><br /><br />
+        <p>A site for users to create and save their ideal Python development environment. Once created, users can share or download their customized environment as a Python script that will install and setup each customization on their local machine.<br />
+           Built by a team of five developers over four days using Python and the Django framework.</p>
+      </div>
+      <div class="col-md-5">
+        <h2>Dine-o-Truck</h2>
+        <a href="http://dine-o-truck.jwarren.co/">
+        <img src="{% static '/static/blog/img/dine-o-truck.jpg' %}" class="img-thumbnail" />
+        </a><br /><br />
+        <p>A site for Seattle to find food trucks in their neighborhoods, complete with details such as hours, payment, addresses, and social network links to their favorite trucks.<br />
+           Built by a team of three developers over four days using Python, Pyramid and SQLAlchemy.</p>
+      </div>
+    </div> <!-- /container -->
+
+
+    <div class="container headliner" id="about">
+      <!-- Row of columns -->
+      <div class="col-md-2">
+        <h1 class="rotate-left project-header blue">About</h1>
+      </div>
+      <div class="col-md-10">
+        <h4>With formal training in the fine arts, I bring a blend of the organic and the structured to every project. 
+        Whether it be software development or photography, I love taking things apart, discovering how they work, how they break, and why we need them. I love 
+        to learn new things, build cool projects, and share my discoveries with others.</h4>
+        <p>Want to know more? I would love to connect with you!</p>
+      </div>
+    </div> <!-- /container -->
+
+
+    <div class="container headliner" id="posts">
+      <!-- Row of columns -->
+      <div class="col-md-2">
+        <h1 class="rotate-left project-header blue">Posts</h1>
+      </div>
+      <div class="col-md-2"></div>
+
       {% if posts %}
         {% for item in posts %}
         <div class="col-md-4">
-          <h2>{{ item.title }}</h2>
+          <h2 class="post-title">{{ item.title }}</h2>
           <p>{{ item.post|markdown|truncatewords:40 }}</p>
           <p><small>posted on {{ item.created }}</small></p>
           <p><a class="btn btn-default" href="{% url 'entry' item.id %}" role="button">Read more &raquo;</a></p>
         </div>
         {% endfor %}
       {% endif %}
-      
     </div> <!-- /container -->
 {% endblock %}
