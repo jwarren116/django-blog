@@ -1,6 +1,11 @@
 Django==1.7.7
+Pillow==2.8.1
 dj-database-url==0.3.0
 django-configurations==0.8
+django-grappelli==2.6.4
+django-markdown-deux==1.0.5
+markdown2==2.3.0
 psycopg2==2.6
 python-dateutil==1.5
+selenium==2.45.0
 wsgiref==0.1.2
