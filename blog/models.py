@@ -17,7 +17,7 @@ class BlogPost(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=63)
-    screen_shot = models.ImageField(upload_to='screen_shots')
+    screen_shot = models.ImageField(upload_to='blog/static/screen_shots/')
     description = models.TextField()
     link = models.URLField()
 
