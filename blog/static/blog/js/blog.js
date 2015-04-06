@@ -1,4 +1,4 @@
-$.backstretch("/static/blog/img/subway.jpg");
+$.backstretch("/static/blog/img/subway-1600.jpg");
 $('.backstretch').css("opacity", 0.4);
 
 function autoScrollTo(elem) {
