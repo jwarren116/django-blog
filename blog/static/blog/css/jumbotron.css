@@ -42,7 +42,8 @@ h5 {
 }
 
 footer {
-  margin-top: 175px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .navbar-inverse {
@@ -69,7 +70,7 @@ footer {
 }
 
 .headliner {
-  margin-top: 250px;
+  margin-bottom: 250px;
 }
 
 .wrapped {
