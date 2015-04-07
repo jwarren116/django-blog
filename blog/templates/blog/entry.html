@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block content %}
-<a href="javascript:history.go(-1)"><h5>&lsaquo;&lsaquo; Back</h5></a>
-</br></br>
+</br>
   <div class="container detail-entry">
+    <h5><a href="javascript:history.go(-1)">&lsaquo;&lsaquo; Back</a></h5>
     <h1>{{ entry.title }}</h1>
     <p><small>posted {{ entry.created }}</small></p>
     <p>{{ entry.post|markdown }}</p>
