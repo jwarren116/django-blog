@@ -42,7 +42,8 @@ h5 {
 }
 
 footer {
-  margin-top: 175px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .navbar-inverse {
@@ -69,7 +70,7 @@ footer {
 }
 
 .headliner {
-  margin-top: 175px;
+  margin-bottom: 250px;
 }
 
 .wrapped {
@@ -100,7 +101,7 @@ footer {
 }
 
 .blue {
-  color: #5CACEE;
+  color: #337AB7;
 }
 
 .post-title {
@@ -109,4 +110,13 @@ footer {
 
 .post {
   height: 370px;
+}
+
+.post-title a {
+  color: #333;
+}
+
+.post-title a:hover {
+  color: #777;
+  text-decoration: none;
 }
