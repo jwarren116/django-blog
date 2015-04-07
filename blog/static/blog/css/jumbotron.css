@@ -69,7 +69,7 @@ footer {
 }
 
 .headliner {
-  margin-top: 175px;
+  margin-top: 250px;
 }
 
 .wrapped {
@@ -100,7 +100,7 @@ footer {
 }
 
 .blue {
-  color: #5CACEE;
+  color: #337AB7;
 }
 
 .post-title {
@@ -109,4 +109,13 @@ footer {
 
 .post {
   height: 370px;
+}
+
+.post-title a {
+  color: #333;
+}
+
+.post-title a:hover {
+  color: #777;
+  text-decoration: none;
 }
