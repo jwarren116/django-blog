@@ -42,7 +42,7 @@ class Base(Settings):
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'blog/static/blog'),
-        # os.path.join(BASE_DIR, 'contact/static/contact')
+        os.path.join(BASE_DIR, 'blog/static/screen_shots'),
     )
 
     TEMPLATE_DIRS = [
