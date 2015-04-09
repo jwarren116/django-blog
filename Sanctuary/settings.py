@@ -14,6 +14,7 @@ class Base(Settings):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'markdown_deux',
+        'sorl.thumbnail',
         'blog',
         'contact',
     )
