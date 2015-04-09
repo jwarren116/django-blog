@@ -45,6 +45,9 @@ class Base(Settings):
         os.path.join(BASE_DIR, 'blog/static/screen_shots'),
     )
 
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
     TEMPLATE_DIRS = [
         os.path.join(BASE_DIR, 'templates'),
         os.path.join(BASE_DIR, 'blog/templates/blog'),
