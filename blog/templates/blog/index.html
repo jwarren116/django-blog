@@ -42,20 +42,20 @@
       {% if projects %}
         {% for project in projects %}
 
-      <div class="col-md-5">
-        <h2>{{ project.title }}</h2>
-        <a href="{{ project.link }}" target="_blank">
+        <div class="col-md-5">
+          <h2>{{ project.title }}</h2>
+          <a href="{{ project.link }}" target="_blank">
 
-        {% thumbnail project.screen_shot "300x225" as im %}
-          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-thumbnail" />
-        {% endthumbnail %}
+          {% thumbnail project.screen_shot "300x225" as im %}
+            <img src="{{ im.url }}" height="{{ im.height }}" width="{{ im.width }}" class="img-thumbnail" />
+          {% endthumbnail %}
 
-        </a><br /><br />
-        <p>{{ project.description }}</p>
-      </div>
-    </div> <!-- /container -->
+          </a><br /><br />
+          <p>{{ project.description }}</p>
+        </div>
         {% endfor %}
       {% endif %}
+    </div> <!-- /container -->
 
     <div class="container headliner" id="posts">
       <!-- Row of columns -->

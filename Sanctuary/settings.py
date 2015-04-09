@@ -63,6 +63,7 @@ class Dev(Base):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
+    THUMBNAIL_DEBUG = True
     # DATABASES = {
     #     'default': {
     #         'ENGINE': 'django.db.backends.sqlite3',
