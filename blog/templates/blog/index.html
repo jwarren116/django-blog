@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load markdown_deux_tags %}
+{% load thumbnail %}
 {% load staticfiles %}
 
 
@@ -37,22 +38,24 @@
       <div class="col-md-2">
         <h1 class="rotate-left project-header blue">Projects</h1>
       </div>
+
+      {% if projects %}
+        {% for project in projects %}
+
       <div class="col-md-5">
-        <h2>ezPy</h2>
-        <a href="http://www.ezpy.co/" target="_blank">
-        <img src="{% static '/static/blog/img/ezpy.jpg' %}" class="img-thumbnail" />
+        <h2>{{ project.title }}</h2>
+        <a href="{{ project.link }}" target="_blank">
+
+        {% thumbnail project.screen_shot "300x225" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-thumbnail" />
+        {% endthumbnail %}
+
         </a><br /><br />
-        <p>A site for users to create and save their ideal Python development environment. Once created, users can share or download their customized environment as a Python script that will install and setup each customization on their local machine. Built by a team of five developers over four days using Python and the Django framework.</p>
-      </div>
-      <div class="col-md-5">
-        <h2>Dine-o-Truck</h2>
-        <a href="http://dine-o-truck.jwarren.co/" target="_blank">
-        <img src="{% static '/static/blog/img/dine-o-truck.jpg' %}" class="img-thumbnail" />
-        </a><br /><br />
-        <p>A site for Seattle to find food trucks in their neighborhoods, complete with details such as hours, payment, addresses, and social network links to their favorite trucks. Built by a team of three developers over four days using Python, Pyramid and SQLAlchemy.</p>
+        <p>{{ project.description }}</p>
       </div>
     </div> <!-- /container -->
-
+        {% endfor %}
+      {% endif %}
 
     <div class="container headliner" id="posts">
       <!-- Row of columns -->
