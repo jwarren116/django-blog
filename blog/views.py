@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import Http404
-from blog.models import BlogPost
+from blog.models import BlogPost, Project
 
 
 def index(request):
     return render(request, 'index.html', {
+        'projects': Project.objects.filter(display=True).all(),
         'posts': BlogPost.objects.filter(display=True).order_by('-created'),
-        'heading': BlogPost.objects.filter(heading=True).order_by('created').first()
     })
 
 

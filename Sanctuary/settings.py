@@ -14,6 +14,7 @@ class Base(Settings):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'markdown_deux',
+        'sorl.thumbnail',
         'blog',
         'contact',
     )
@@ -41,8 +42,11 @@ class Base(Settings):
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'blog/static/blog'),
-        # os.path.join(BASE_DIR, 'contact/static/contact')
+        os.path.join(BASE_DIR, 'blog/static/screen_shots'),
     )
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
     TEMPLATE_DIRS = [
         os.path.join(BASE_DIR, 'templates'),
@@ -62,6 +66,7 @@ class Dev(Base):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
+    THUMBNAIL_DEBUG = True
     # DATABASES = {
     #     'default': {
     #         'ENGINE': 'django.db.backends.sqlite3',
