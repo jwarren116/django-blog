@@ -42,11 +42,10 @@ class Base(Settings):
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'blog/static/blog'),
-        os.path.join(BASE_DIR, 'blog/static/screen_shots'),
     )
 
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = BASE_DIR + '/public/media/'
 
     TEMPLATE_DIRS = [
         os.path.join(BASE_DIR, 'templates'),
