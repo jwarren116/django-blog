@@ -6,5 +6,9 @@ class UserAdmin(admin.ModelAdmin):
     fields = ['title', 'post', 'display']
     list_display = ('id', 'title', 'post', 'created', 'display')
 
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'link', 'display')
+
 admin.site.register(BlogPost, UserAdmin)
-admin.site.register(Project)
+admin.site.register(Project, ProjectAdmin)
