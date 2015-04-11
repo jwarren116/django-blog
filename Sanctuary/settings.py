@@ -44,7 +44,7 @@ class Base(Settings):
         os.path.join(BASE_DIR, 'blog/static/blog'),
     )
 
-    MEDIA_URL = '/public/media/'
+    MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR + '/public/media/'
 
     TEMPLATE_DIRS = [
