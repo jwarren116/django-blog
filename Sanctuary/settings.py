@@ -16,7 +16,6 @@ class Base(Settings):
         'markdown_deux',
         'sorl.thumbnail',
         'blog',
-        'contact',
     )
 
     MIDDLEWARE_CLASSES = (
