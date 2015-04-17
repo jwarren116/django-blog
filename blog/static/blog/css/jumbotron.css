@@ -70,17 +70,17 @@ footer {
 }
 
 .headliner {
+  margin-top: 75px;
   margin-bottom: 250px;
 }
 
 .wrapped {
   max-width: 70%;
-  float: right;
+  margin: 0 auto;
 }
 
 .project-header {
   font-family: 'Josefin Sans', sans-serif !important;
-  /*font-family: 'Righteous', sans-serif !important;*/
   font-weight: 700;
   text-align: right;
 }
