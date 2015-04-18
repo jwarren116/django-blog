@@ -73,11 +73,12 @@ class Dev(Base):
     # }
     ALLOWED_HOSTS = ['*']
     SECRET_KEY = 'secret'
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 class Prod(Base):
-    from secrets import EMAIL_PASSWORD, EMAIL_USER, SECRET
+    # from secrets import EMAIL_PASSWORD, EMAIL_USER
+    from secrets import SECRET
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     DEBUG = False
     TEMPLATE_DEBUG = DEBUG
@@ -85,9 +86,9 @@ class Prod(Base):
     ALLOWED_HOSTS = ['.jwarren.co']
     SECRET_KEY = SECRET
 
-    EMAIL_HOST = 'mail.jwarren.co'
-    EMAIL_HOST_USER = EMAIL_USER
-    EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
-    SERVER_EMAIL = DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
+    # EMAIL_HOST = 'mail.jwarren.co'
+    # EMAIL_HOST_USER = EMAIL_USER
+    # EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+    # SERVER_EMAIL = DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    # EMAIL_PORT = 587
+    # EMAIL_USE_TLS = True
