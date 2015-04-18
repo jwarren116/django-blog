@@ -41,6 +41,11 @@ h5 {
   font-size: 1.5em;
 }
 
+code {
+  background: none !important;
+  white-space: pre-wrap;
+}
+
 footer {
   margin-top: 50px;
   margin-bottom: 100px;
