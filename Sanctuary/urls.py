@@ -7,7 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('blog.urls')),
-    # url(r'^contact/', 'contact.views.contact', name='contact'),
 )
 
 if settings.DEBUG:
