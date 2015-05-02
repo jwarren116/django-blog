@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <h1>HTTP Headers:</h1>
+      <ul>
+        {% for header, content in http_headers.items %}
+        <li>{{ header }}: {{ content }}</li>
+        {% endfor %}
+      </ul>
+    <h1>Cookies:</h1>
+      <ul>
+        {% for cookie, content in cookies.items %}
+        <li>{{ cookie }}: {{ content }}</li>
+        {% endfor %}
+      </ul>
+  </body>
+</html>
