@@ -76,10 +76,10 @@ class Dev(Base):
 
 
 class Prod(Base):
-    from secrets import SECRET
+    # from secrets import SECRET
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     DEBUG = False
     TEMPLATE_DEBUG = DEBUG
     # DATABASES = {'default': dj_database_url.config()}
     ALLOWED_HOSTS = ['.jwarren.co']
-    SECRET_KEY = SECRET
+    SECRET_KEY = os.environ.get('SECRET_KEY', 's3cr!th4$]-[')
