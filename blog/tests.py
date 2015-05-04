@@ -1,5 +1,5 @@
 from django.test import LiveServerTestCase
-from blog.models import BlogPost
+from blog.models import BlogPost, Project
 from selenium import webdriver
 import factory
 
@@ -10,6 +10,16 @@ class PostFactory(factory.django.DjangoModelFactory):
 
     title = 'Post'
     post = 'This is a new post'
+    display = True
+
+
+class ProjectFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Project
+
+    title = 'Some Project'
+    description = 'Some details'
+    link = 'http://www.jwarren.co/'
     display = True
 
 
