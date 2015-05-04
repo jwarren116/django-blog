@@ -18,20 +18,22 @@ class ProjectFactory(factory.django.DjangoModelFactory):
         model = Project
 
     title = 'Some Project'
+    screen_shot = factory.django.ImageField(color='blue')
     description = 'Some details'
-    link = 'http://www.jwarren.co/'
+    link = 'http://www.someproject.co/'
     display = True
 
 
-class TestProfileView(LiveServerTestCase):
+class TestHomeView(LiveServerTestCase):
     def setUp(self):
         self.selenium = webdriver.Firefox()
         self.post = PostFactory.create()
-        super(TestProfileView, self).setUp()
+        self.project = ProjectFactory.create()
+        super(TestHomeView, self).setUp()
 
     def tearDown(self):
         self.selenium.quit()
-        super(TestProfileView, self).tearDown()
+        super(TestHomeView, self).tearDown()
 
     def test_home(self):
         '''test that home page is available to visitor'''
@@ -47,3 +49,9 @@ class TestProfileView(LiveServerTestCase):
         assert self.selenium.find_element_by_class_name('detail-entry')
         self.selenium.find_element_by_partial_link_text('James Warren').click()
         assert self.selenium.find_element_by_id('summary')
+
+    def test_projects(self):
+        '''test that projects are displayed on index page for visitor'''
+        self.selenium.get(self.live_server_url)
+        assert self.selenium.find_element_by_class_name('img-thumbnail')
+        self.assertIn('Some Project', self.selenium.page_source)
