@@ -8,6 +8,7 @@ django-markdown-deux==1.0.5
 factory-boy==2.5.2
 markdown2==2.3.0
 psycopg2==2.6
+python-coveralls==2.5.0
 python-dateutil==1.5
 selenium==2.45.0
 sorl-thumbnail==12.2
