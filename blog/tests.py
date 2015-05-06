@@ -1,5 +1,6 @@
 from django.test import LiveServerTestCase
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from blog.models import BlogPost, Project
 from selenium import webdriver
 import factory
@@ -23,16 +24,6 @@ class ProjectFactory(factory.django.DjangoModelFactory):
     description = 'Some details'
     link = 'http://www.someproject.co/'
     display = True
-
-
-class AdminFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = User
-
-    username = 'test_admin'
-    password = 'secret'
-    email = 'tester@somedomain.com'
-    is_staff = True
 
 
 class TestHomeView(LiveServerTestCase):
@@ -77,9 +68,26 @@ class TestHomeView(LiveServerTestCase):
 class TestAdmin(LiveServerTestCase):
     def setUp(self):
         self.selenium = webdriver.Firefox()
-        self.admin = AdminFactory.create()
+        self.admin = User.objects.create_superuser('test_admin',
+                                                   'tester@somedomain.com',
+                                                   'secret'
+                                                   )
         super(TestAdmin, self).setUp()
 
     def tearDown(self):
         self.selenium.quit()
         super(TestAdmin, self).tearDown()
+
+    def login_user(self):
+        """login user"""
+        self.selenium.get(self.live_server_url + '/admin')
+        username_field = self.selenium.find_element_by_id('id_username')
+        username_field.send_keys('test_admin')
+        password_field = self.selenium.find_element_by_id('id_password')
+        password_field.send_keys('secret')
+        form = self.selenium.find_element_by_tag_name('form')
+        form.submit()
+
+    def test_login(self):
+        self.login_user()
+        self.assertIn('Log out', self.selenium.page_source)
