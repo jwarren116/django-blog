@@ -61,3 +61,14 @@ class TestHomeView(LiveServerTestCase):
         invalid_url = self.live_server_url + "/876"
         self.selenium.get(invalid_url)
         self.assertIn('Page not found', self.selenium.page_source)
+
+
+class TestAdmin(LiveServerTestCase):
+    def setUp(self):
+        self.selenium = webdriver.Firefox()
+        self.admin = AdminFactory.create()
+        super(TestAdmin, self).setUp()
+
+    def tearDown(self):
+        self.selenium.quite()
+        super(TestAdmin, self).tearDown()
