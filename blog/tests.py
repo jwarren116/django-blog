@@ -55,3 +55,9 @@ class TestHomeView(LiveServerTestCase):
         self.selenium.get(self.live_server_url)
         assert self.selenium.find_element_by_class_name('img-thumbnail')
         self.assertIn('Some Project', self.selenium.page_source)
+
+    def test_invalid_post_id(self):
+        '''test that a propper 404 is returned when asking for an invalid post'''
+        invalid_url = self.live_server_url + "/876"
+        self.selenium.get(invalid_url)
+        self.assertIn('Page not found', self.selenium.page_source)
