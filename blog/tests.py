@@ -1,4 +1,5 @@
 from django.test import LiveServerTestCase
+from django.contrib.auth.models import User
 from blog.models import BlogPost, Project
 from selenium import webdriver
 import factory
@@ -22,6 +23,16 @@ class ProjectFactory(factory.django.DjangoModelFactory):
     description = 'Some details'
     link = 'http://www.someproject.co/'
     display = True
+
+
+class AdminFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = User
+
+    username = 'test_admin'
+    password = 'secret'
+    email = 'tester@somedomain.com'
+    is_staff = True
 
 
 class TestHomeView(LiveServerTestCase):
@@ -57,7 +68,7 @@ class TestHomeView(LiveServerTestCase):
         self.assertIn('Some Project', self.selenium.page_source)
 
     def test_invalid_post_id(self):
-        '''test that a propper 404 is returned when asking for an invalid post'''
+        '''test that 404 is returned when asking for an invalid post url'''
         invalid_url = self.live_server_url + "/876"
         self.selenium.get(invalid_url)
         self.assertIn('Page not found', self.selenium.page_source)
@@ -70,5 +81,5 @@ class TestAdmin(LiveServerTestCase):
         super(TestAdmin, self).setUp()
 
     def tearDown(self):
-        self.selenium.quite()
+        self.selenium.quit()
         super(TestAdmin, self).tearDown()
