@@ -79,7 +79,7 @@ class TestAdmin(LiveServerTestCase):
         super(TestAdmin, self).tearDown()
 
     def login_user(self):
-        """login user"""
+        '''login user'''
         self.selenium.get(self.live_server_url + '/admin')
         username_field = self.selenium.find_element_by_id('id_username')
         username_field.send_keys('test_admin')
@@ -89,5 +89,23 @@ class TestAdmin(LiveServerTestCase):
         form.submit()
 
     def test_login(self):
+        '''created user able to login to admin interface'''
         self.login_user()
         self.assertIn('Log out', self.selenium.page_source)
+
+    def test_make_post(self):
+        '''super user able to create new post'''
+        self.login_user()
+        self.selenium.get(self.live_server_url + '/admin/blog/blogpost/add')
+        title_field = self.selenium.find_element_by_id('id_title')
+        title_field.send_keys('New title')
+        content_field = self.selenium.find_element_by_id('id_post')
+        content_field.send_keys('Body content')
+        display_field = self.selenium.find_element_by_id('id_display')
+        display_field.click()
+        form = self.selenium.find_element_by_tag_name('form')
+        form.submit()
+        self.assertIn('The blog post "New title" was added successfully.',
+                      self.selenium.page_source)
+        self.selenium.get(self.live_server_url)
+        self.assertIn('New title', self.selenium.page_source)
