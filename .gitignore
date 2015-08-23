@@ -7,3 +7,6 @@ secrets.py
 blog/static/blog/img/subway.png
 cache
 media
+build/
+*.save*
+screen_shots
