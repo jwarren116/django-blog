@@ -7,7 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('blog.urls')),
-    url(r'^http/', include('http.urls')),
 )
 
 if settings.DEBUG:

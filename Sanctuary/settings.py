@@ -1,6 +1,5 @@
 import os
 from configurations import Settings
-# import dj_database_url
 
 
 class Base(Settings):
@@ -49,7 +48,6 @@ class Base(Settings):
     TEMPLATE_DIRS = [
         os.path.join(BASE_DIR, 'templates'),
         os.path.join(BASE_DIR, 'blog/templates/blog'),
-        os.path.join(BASE_DIR, 'http/templates/http')
     ]
 
     DATABASES = {
