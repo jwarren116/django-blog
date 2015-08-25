@@ -24,4 +24,5 @@ def deploy():
     app_dir = "~/jwarren.co/"
     with cd(app_dir):
         run("git pull origin master")
+        run("python manage.py collectstatic")
         run("touch tmp/restart.txt")
