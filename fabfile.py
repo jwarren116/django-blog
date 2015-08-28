@@ -20,9 +20,14 @@ def prepare_deploy():
     push()
 
 
-def deploy():
+def deploy_github():
     app_dir = "~/jwarren.co/"
     with cd(app_dir):
         run("git pull origin master")
         run("python manage.py collectstatic")
         run("touch tmp/restart.txt")
+
+
+def deploy():
+    prepare_deploy()
+    deploy_github()
