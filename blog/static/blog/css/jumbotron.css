@@ -79,6 +79,10 @@ footer {
   margin-bottom: 250px;
 }
 
+#posts.headliner {
+  margin-bottom: 0;
+}
+
 .wrapped {
   max-width: 70%;
   margin: 0 auto;
