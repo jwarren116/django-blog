@@ -6,7 +6,7 @@ from blog.models import BlogPost, Project
 def index(request):
     return render(request, 'index.html', {
         'projects': Project.objects.filter(display=True).order_by('-id'),
-        'posts': BlogPost.objects.filter(display=True).order_by('-created'),
+        'posts': BlogPost.objects.filter(display=True).order_by('-created')[:8],
     })
 
 
